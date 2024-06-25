@@ -1,0 +1,65 @@
+{% extends "workload/base.html" %}
+{% load tag %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+<div class="container">
+    <h2 class="text-center">Person list</h2>
+</div>
+
+<table class="rwd-table">
+    <thead>
+    <tr scope="header">
+        <th scope="col">Name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">First name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Resource type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for personne in personnes_list %}
+    <tr>
+        <td scope="col"><a href="{% url 'detail_personne' personne.id %}">{{personne.name}}</a></td>
+        <td scope="col">{{personne.last_name}}</td>
+        <td scope="col">{{personne.first_name}}</td>
+        <td scope="col">{{personne.email}}</td>
+        <td scope="col">{{personne.resource_type}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<div class="text-center">
+    {% if personnes_list.has_previous %}
+    <a href="?{% param_replace page=personnes_list.previous_page_number%}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ personnes_list.number }} in {{ personnes_list.paginator.num_pages }}
+    </span>
+    {% if personnes_list.has_next %}
+    <a href="?{% param_replace page=personnes_list.next_page_number%}">Next</a>
+    {% endif %}
+</div>
+<br>
+<div>
+    <form action=" {% url 'personnes' %}" method="post">
+        {%csrf_token %}
+        <div class="formulaire">
+            <div>
+                <label for="{{ form.name.id_for_label }}">Username:</label>
+                {{ form.name }}
+                <label for="{{ form.resource_type.id_for_label }}">Ressource Type:</label>
+                {{ form.resource_type }}
+            </div>
+
+            <button class="button" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Research
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

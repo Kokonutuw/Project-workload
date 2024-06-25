@@ -1,0 +1,54 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+    <h2>Projects List</h2>
+</div>
+<table class="rwd-table">
+    <thead>
+    <tr scope="header">
+        <th scope="col">Key</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Update</th>
+        <th scope="col">Tasks</th>
+        <th scope="col">Bugs</th>
+        <th scope="col">Stories</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for project in list_projects %}
+    <tr>
+        <td scope="col">{{project.key}}</td>
+        <td scope="col">{{project.name}}</td>
+        <td scope="col">{{project.category}}</td>
+        <td scope="col">{{project.date_update}}</td>
+        <td scope="col">{{project.tasks}}</td>
+        <td scope="col">{{project.bugs}}</td>
+        <td scope="col">{{project.stories}}</td>
+            <a href="{% url 'updates_import_project_task' project.id %}">
+                <i class="fa-solid fa-sync" aria-hidden="true"></i>
+            </a>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+<br>
+<div class="text-center">
+    {% if list_projects.has_previous %}
+    <a href="{% url 'projects'%}?page={{list_projects.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ list_projects.number }} in {{ list_projects.paginator.num_pages  }}
+    </span>
+    {% if list_projects.has_next %}
+    <a href="{% url 'projects'%}?page={{list_projects.next_page_number}}">Next</a>
+    {% endif %}
+</div>
+<a href="{% url 'updates_import_project' %}" class="btn-5">Update All projects</a>
+
+
+{% endblock %}

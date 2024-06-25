@@ -1,0 +1,88 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/detail_personne.css' %}">
+<div class="detail">
+    <canvas id="planning_person" width="400" height="100" style="border:2px solid black; background:white;"></canvas>
+    <div class="attribut">
+        <div>
+            <div>
+                <strong>Name</strong>: {{personne.name}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>First Name</strong>: {{personne.first_name}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Last Name</strong>: {{personne.last_name}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Email</strong>: {{personne.email}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Ressource Type</strong>: {{personne.resource_type}} <br>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    var canvas = document.getElementById('planning_person');
+    var ctx = canvas.getContext('2d');
+    var planning_chart = new Chart(ctx, {
+        data: {
+            labels: {{ label_personne|safe }},
+            datasets: [
+                {
+                    type: 'bar',
+                    label: 'Workload',
+                    data: {{ data_workload_person|safe }},
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    borderWidth: 1
+                },
+                {
+                    type: 'bar',
+                    label: 'Workload Done',
+                    data: {{ data_workload_done_person|safe }},
+                    backgroundColor: 'rgb(75, 192, 75)',
+                    borderWidth: 1
+                },
+                {
+                    type: 'bar',
+                    label: 'Workload Left',
+                    data: {{ data_workload_left_person|safe }},
+                    backgroundColor: 'rgb(192, 75, 192)',
+                    borderWidth: 1
+                },
+                {
+                        type: 'line',
+                        label: 'Availability',
+                        data: {{ data_availability_person|safe }},
+                        borderColor: 'rgb(192, 192, 75)',
+                        borderWidth: 1,
+                        fill: false
+                    }
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    </script>
+</div>
+{% endblock %}

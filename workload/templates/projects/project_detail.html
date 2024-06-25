@@ -1,0 +1,36 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/personne_detail.css' %}">
+<div class="detail">
+    Key : {{projects.key}}
+    <div class="attribut">
+        <div>
+            <div>
+                <strong>Name</strong>: {{projects.name}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Category</strong>: {{projects.category}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Tasks</strong>: {{projects.tasks}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Bugs</strong>: {{projects.bugs}} <br>
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Stories</strong>: {{projects.stories}} <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

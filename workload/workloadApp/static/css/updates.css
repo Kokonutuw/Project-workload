@@ -1,0 +1,8 @@
+.bouton{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:left;
+    align-content:center;
+    width:20%;
+    height:15%;
+}

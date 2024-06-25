@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Workload</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/personne_form.css' %}">
+</head>
+<body>
+<div class="sidebar-container">
+    <div class="sidebar-logo">
+        <img src="https://velco.tech/wp-content/uploads/2020/03/logo-velco-test-2.png">
+    </div>
+    <ul class="sidebar-navigation">
+        <li class="{% if selected == 'home' %}active{% endif %}">
+            <a href="{% url 'home' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Home
+            </a>
+        </li>
+        <li class="{% if selected == 'dashboard' %}active{% endif %}">
+            <a href="{% url 'dashboard' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Dashboard
+            </a>
+        </li>
+        <li class="{% if selected == 'roadmap' %}active{% endif %}">
+            <a href="{% url 'roadmap' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Roadmap
+            </a>
+        </li>
+        <li class="{% if selected == 'personnes' %}active{% endif %}">
+            <a href="{% url 'personnes' %}">
+                <i class="fa fa-users" aria-hidden="true"></i> Person
+            </a>
+        </li>
+        <li class="{% if selected == 'tasks' %}active{% endif %}">
+            <a href="{% url 'tasks' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Tasks
+            </a>
+        </li>
+        <li class="{% if selected == 'sprints' %}active{% endif %}">
+            <a href="{% url 'sprints' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Sprints
+            </a>
+        </li>
+        <li class="{% if selected == 'products' %}active{% endif %}">
+            <a href="{% url 'products' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Products
+            </a>
+        </li>
+        <li class="{% if selected == 'projects' %}active{% endif %}">
+            <a href="{% url 'projects' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Projects
+            </a>
+        </li>
+        <li class="{% if selected == 'projects_customers' %}active{% endif %}">
+            <a href="{% url 'projects_customers' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Projects Customers
+            </a>
+        </li>
+        <li class="{% if selected == 'versions' %}active{% endif %}">
+            <a href="{% url 'versions' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Versions
+            </a>
+        </li>
+        <li class="{% if selected == 'incoming' %}active{% endif %}">
+            <a href="{% url 'incoming' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Incoming
+            </a>
+        </li>
+        <li class="{% if selected == 'updates' %}active{% endif %}">
+            <a href="{% url 'updates' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Updates
+            </a>
+        </li>
+        <div class="sidebar-logo">
+        </div>
+        <li class="{% if selected == 'logout' %}active{% endif %}">
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Logout
+            </a>
+        </li>
+        <li class="{% if selected == 'password_change' %}active{% endif %}">
+            <a href="{% url 'password_change' %}">
+                <i class="fa fa-home" aria-hidden="true"></i> Password change
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="content-container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

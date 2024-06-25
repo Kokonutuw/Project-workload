@@ -1,0 +1,8 @@
+.title {
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    background:#383E42;
+    border-radius:10px;
+}

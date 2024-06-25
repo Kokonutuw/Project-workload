@@ -1,0 +1,45 @@
+
+.interface-passwd{
+    width:430px;
+    height:600px;
+    background:#383E42;
+    display:flex;
+    position:absolute;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    border-radius:30px;
+    transform: translate(-50%, -50%);
+    top:50%;
+    left:50%;
+    border-width:thick;
+    color:white
+
+}
+
+.interface-passwd-done {
+    width:430px;
+    height:200px;
+    background:#383E42;
+    display:flex;
+    position:absolute;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    border-radius:30px;
+    transform: translate(-50%, -50%);
+    top:50%;
+    left:50%;
+    border-width:thick;
+    color:white
+
+}
+
+.button-passwd {
+    border-radius:30px;
+    background-color:#383E42;
+    color:white;
+    display:flex;
+    justify-content:center;
+    border-width:thick;
+}

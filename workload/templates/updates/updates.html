@@ -1,0 +1,61 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/updates.css' %}">
+<h1 style="display:flex; justify-content:center;">Updates</h1>
+<div style="display:flex;width:100%;height:100%;justify-content:center;align-items:center;">
+    <div style="display:flex;width:75%;justify-content:center;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; align-content:center; margin-top:5%; align-items:stretch;border-radius:30px;width:100%; height:70%;">
+            <div class="bouton">
+                <a href="{% url 'delete_and_update_holidays' %}" class="btn-5"> Import Holidays</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'calculate_unavailability_per_person_per_month' %}" class="btn-5"> Calculate
+                    Availability</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'calculate_workload_per_person_per_month' %}" class="btn-5"> Calculate Workload</a>
+            </div>
+
+            <div class="bouton">
+                <a href="{% url 'import_all_projects_task_from_jira' %}" class="btn-5"> Import task for all projects
+                    TECH</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'updates_import_project' %}" class="btn-5"> Update Project from Jira</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'import_product_from_jira' %}" class="btn-5"> Update Products from Jira</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'import_project_customer_from_jira' %}" class="btn-5"> Update Customers Projects from
+                    Jira</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'clear_outdated_data' %}" class="btn-5"> Clear outdated Data</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'updates_clear_all_task' %}" class="btn-5"> Clear all tasks</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'updates_admin_task' %}" class="btn-5"> Update admin task</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'import_all_products_stories_from_jira'%}" class="btn-5">Import stories</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'import_all_epic_from_jira'%}" class="btn-5">Import Epic</a>
+            </div>
+            <div class="bouton">
+                <a href="{% url 'import_all_epic_storie_from_jira'%}" class="btn-5">Import stories Epic</a>
+            </div>
+
+            </br>
+        </div>
+    </div>
+</div>
+<p class="text-left">
+</p>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "workload/base.html" %}
+
+{% block content %}
+  {% load static %}
+  <h2>Roadmap test</h2>
+
+  <canvas id="Roadmap" width="3000" height="1000" style="border:2px solid black;background:white;color:white;margin-bottom:1%;"></canvas>
+
+  <script src="{% static 'js/base.js' %}"></script>
+  <br>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+
+    var canvasRoadmap = document.getElementById('Roadmap');
+    var ctx = canvasRoadmap.getContext('2d');
+
+    var epic_labels = JSON.parse('{{ epic_labels|safe }}');
+    var epic_data = JSON.parse('{{ epic_data|safe }}');
+    var data_availability_fs = JSON.parse('{{ data_availability_fs|safe }}');
+    var color_availability_fs = '{{ color_availability_fs|safe }}';
+    var color_list = JSON.parse('{{ epics_color|safe }}');
+    var dataset = [];
+    for (var i = 0; i < epic_labels.length; i++) {
+      dataset.push({
+        label: epic_labels[i],
+        data: epic_data[i],
+        backgroundColor: color_list[epic_labels[i]],
+        borderWidth: 1
+      });
+    }
+
+    var currentMonth = new Date().getMonth()-1;
+    var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var labels = monthNames.slice(currentMonth).concat(monthNames.slice(0, currentMonth));
+
+    var roadmapChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: dataset.concat([{
+          type: 'line',
+          label: 'Availability FullStack',
+          data: data_availability_fs,
+          borderColor: color_availability_fs,
+          borderWidth: 2
+        }])
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "workload/base.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Key : {{tasks.key}}
+        <a href=" {% url 'update_task' tasks.id %}" class="close">
+            <i class="fas fa-pen"></i>
+        </a>
+    </div>
+    <div lasse="card-body">
+        <div class="row">
+            <div class="col">
+                <strong>Summary : </strong> : {{tasks.summary}} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Version : </strong> : {{tasks.version}} <br>
+            </div>
+            <div class="col">
+                <strong>Sprint : </strong> : {{tasks.sprint}} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Story : </strong> : {{tasks.story_link}} <br>
+            </div>
+            <div class="col">
+                <strong>Assignee : </strong> : {{tasks.assignee}} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Estimation : </strong> : {{tasks.estimation}} <br>
+            </div>
+            <div class="col">
+                <strong>Estimation Done : </strong> : {{tasks.estimation_done}} <br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "workload/base.html" %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+    <h2>Versions list</h2>
+</div>
+
+
+<table class="rwd-table">
+    <thead>
+    <tr scope="header">
+        <th scope="col">Name</th>
+        <th scope="col">Start date</th>
+        <th scope="col">End date</th>
+        <th scope="col">Stories</th>
+        <th scope="col">Bugs</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for version in list_versions %}
+    <tr>
+        <td scope="col"><a href="{% url 'version_detail' version.id %}">{{version.name}} </a></td>
+        <td scope="col">{{version.start_date_dev}}</td>
+        <td scope="col">{{version.end_date_qa}}</td>
+        <td scope="col">{{version.stories}}</td>
+        <td scope="col">{{version.bugs}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<div class="text-center">
+    {% if list_versions.has_previous %}
+    <a href="?{% url 'versions'%}?page{{versions_list.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ list_versions.number }} in {{ list_versions.paginator.num_pages }}
+    </span>
+    {% if list_versions.has_next %}
+    <a href="?{% url 'versions'%}?page{{versions_list.next_page_number}}">Next</a>
+    {% endif %}
+</div>
+
+{% endblock %}

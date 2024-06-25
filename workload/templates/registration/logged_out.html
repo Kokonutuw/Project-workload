@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>You're logged out</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/loggin.css' %}">
+</head>
+<body class="body-loggout">
+<div class="background">
+    <div class="interface-loggout">
+        <h3>Logout</h3>
+        <button class="button-loggout"><a href=" {% url 'login' %}"
+                                          style="text-decoration:none; color:inherit;"><strong>Reconnect</strong></a>
+        </button>
+    </div>
+</div>
+</body>
+</html>

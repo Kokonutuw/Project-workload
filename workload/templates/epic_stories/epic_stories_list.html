@@ -1,0 +1,48 @@
+{% extends "workload/base.html" %}
+{% load tag %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+<div class="container">
+    <h2 class="text-center">Epic Stories list</h2>
+</div>
+
+<table class="rwd-table">
+    <thead>
+    <tr scope="header">
+        <th scope="col">Issue Key</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Type</th>
+        <th scope="col"> Epic</th>
+        <th scope="col">Estimation</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for epic_storie in list_epics_stories %}
+    <tr>
+        <td scope="col">{{epic_storie.key}}</td>
+        <td scope="col">{{epic_storie.summary}}</td>
+        <td scope="col">{{epic_storie.type}}</td>
+        <td scope="col">{{epic_storie.epic}}</td>
+        <td scope="col">{{epic_storie.estimate_fs}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<div class="text-center">
+    {% if list_epics_stories.has_previous %}
+    <a href="{% url 'epic_storie'%}?page={{list_epics_stories.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ list_epics_stories.number }} in {{ list_epics_stories.paginator.num_pages  }}
+    </span>
+    {% if list_epics_stories.has_next %}
+    <a href="{% url 'epic_storie'%}?page={{list_epics_stories.next_page_number}}">Next</a>
+    {% endif %}
+</div>
+{% endblock %}

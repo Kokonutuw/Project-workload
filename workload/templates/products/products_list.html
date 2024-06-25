@@ -1,0 +1,52 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+    <h2>Products list</h2>
+</div>
+<table class="rwd-table">
+    <thead>
+    <th scope="col">Key</th>
+    <th scope="col">Name</th>
+    <th scope="col">Category</th>
+    <th scope="col">Update</th>
+    <th scope="col">Tasks</th>
+    <th scope="col">Bugs</th>
+    <th scope="col">Stories</th>
+    </th>
+    </thead>
+    <tbody>
+    {% for product in list_products %}
+    <tr>
+        <td scope="col"><a href="https://velco-tech.atlassian.net/browse/{{product.key}}">{{product.key}}</a></td>
+        <td scope="col">{{product.name}}</td>
+        <td scope="col">{{product.category}}</td>
+        <td scope="col">{{product.date_update}}</td>
+        <td scope="col">{{product.tasks}}</td>
+        <td scope="col">{{product.bugs}}</td>
+        <td scope="col">{{product.stories}}</td>
+            <a href="{% url 'updates_import_product_stories' product.id %}">
+                <i class="fa-solid fa-sync" aria-hidden="true"></i>
+            </a>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<div class="text-center">
+    {% if list_products.has_previous %}
+    <a href="{% url 'products'%}?page={{list_products.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ list_products.number }} in {{ list_products.paginator.num_pages  }}
+    </span>
+    {% if list_products.has_next %}
+    <a href="{% url 'products'%}?page={{list_products.next_page_number}}">Next</a>
+    {% endif %}
+</div>
+<a href="{% url 'import_product_from_jira' %}" class="btn-5">Update All products</a>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+LEGAL_ENTITY;DEPARTEMENT;LAST_NAME;FIRST_NAME;REQUEST_STATUS;ACCOUNT_NAME;ACCOUNT_UNIT;START_DATE;END_DATE;DURATION
+Velco;Web development;BARIL;Régis;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;12/06/2023;12/06/2023;1
+Velco;Web development;BARIL;Régis;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;13/06/2023;13/06/2023;0,5
+Velco;Web development;BARIL;Régis;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;03/07/2023;13/07/2023;9
+Velco;Web development;BOUCHER;Pierre;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;14/08/2023;14/08/2023;1
+Velco;Web development;BOUCHER;Pierre;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;21/08/2023;21/08/2023;1
+Velco;Web development;BOUCHER;Pierre;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;22/08/2023;25/08/2023;4
+Velco;Web development;BOUCHER;Pierre;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;18/09/2023;25/09/2023;5
+Velco;Web development;BOUCHER;Pierre;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;18/09/2023;18/09/2023;0,5
+Velco;Web development;BOUCHER;Pierre;Approuvée;Congés payés ouvrés 2023/2024;jour ouvré;25/09/2023;29/09/2023;4,5
+Velco;Web development;DE SOUZA;Lucas;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;11/08/2023;17/08/2023;4
+Velco;Web development;DE SOUZA;Lucas;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;18/08/2023;18/08/2023;1
+Velco;QA;DIARD;Sébastien;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;12/06/2023;12/06/2023;1
+Velco;QA;DIARD;Sébastien;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;13/06/2023;16/06/2023;4
+Velco;Web development;EVENO;Nicolas;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;28/07/2023;14/08/2023;12
+Velco;Mobile development;FREUCHET;Grégoire;Approuvée;Congé sans solde;jour ouvré;05/06/2023;05/06/2023;1
+Velco;Mobile development;FREUCHET;Grégoire;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;10/08/2023;18/08/2023;6
+Velco;Mobile development;FREUCHET;Grégoire;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;05/09/2023;05/09/2023;1
+Velco;Mobile development;FREUCHET;Grégoire;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;06/09/2023;11/09/2023;4
+Velco;Infrastructure systems & networks;HUET;Franck;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;05/06/2023;05/06/2023;1
+Velco;Infrastructure systems & networks;HUET;Franck;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;10/07/2023;17/07/2023;4,5
+Velco;Infrastructure systems & networks;HUET;Franck;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;17/07/2023;31/07/2023;10,5
+Velco;Web development;MILLOT;Maxence;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;15/06/2023;15/06/2023;1
+Velco;Web development;MILLOT;Maxence;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;16/06/2023;19/06/2023;2
+Velco;Mobile development;PADIOU;Nicolas;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;26/06/2023;29/06/2023;4
+Velco;Mobile development;PADIOU;Nicolas;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;30/06/2023;30/06/2023;1
+Velco;Web development;PIOMBINI;Amandine;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;27/06/2023;03/07/2023;2
+Velco;Web development;PIOMBINI;Amandine;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;28/06/2023;04/07/2023;4
+Velco;Cloud services;RIPAULT;Marion;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;20/07/2023;20/07/2023;1
+Velco;Cloud services;RIPAULT;Marion;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;21/07/2023;04/08/2023;11
+Velco;Cloud services;RIPAULT;Marion;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;07/08/2023;07/08/2023;1
+Velco;Web development;STAINTON;Pierre;Approuvée;Congés payés ouvrés 2021/2022;jour ouvré;26/06/2023;26/06/2023;1
+Velco;Web development;STAINTON;Pierre;Approuvée;Congés payés ouvrés 2022/2023;jour ouvré;27/06/2023;30/06/2023;4
+Velco;Web development;STAINTON;Pierre;Approuvée;Jours de repos supplémentaire (39h) 2023;jour ouvré;06/07/2023;06/07/2023;1
+Velco;Web development;STAINTON;Pierre;Approuvée;Congés payés ouvrés 2021/2022;jour ouvré;20/07/2023;20/07/2023;0,5

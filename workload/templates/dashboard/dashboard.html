@@ -1,0 +1,130 @@
+{% extends "workload/base.html" %}
+{% block content %}
+<h1 style="display:flex;justify-content:center;">Dashboard</h1>
+<div class="container"
+     style="color:#fff; background:#383E42;border-radius:30px;width:100%;height:100%; display:flex; justify-content:space-around; flex-direction:column; align-items:center;">
+    <h2>Sprints</h2>
+
+    {% load static %}
+    <canvas id="planning_sprint" width="1000" height="300" style="border:2px solid black;background:white"></canvas>
+    <br>
+
+    <h2>Fullstack workload</h2>
+
+    <canvas id="planning_fullstack" width="1000" height="300"
+            style="border:2px solid black;background:white;color:white;margin-bottom:1%;"></canvas>
+</div>
+<script src="{% static 'js/base.js' %}"></script>
+<br>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var canvasSprint = document.getElementById('planning_sprint')
+    var ctx = canvasSprint.getContext('2d');
+    var planning_s = new Chart(ctx, {
+    data: {
+        labels: {{ label_sprint|safe }},
+        datasets : [
+
+        {% for key, value in data_sprint.items %}
+        {
+            type: 'bar',
+            label: '{{key}}',
+            data: {{  value.count|safe }},
+            backgroundColor: '{{ value.color}}',
+            borderWidth: 1
+        },
+
+        {% endfor %}
+        {
+            type: 'line',
+            label: 'Availability FullStack',
+            data: {{  data_availability_fs|safe }},
+            borderColor: '#383E42',
+            borderWidth: 2
+        }
+        ]
+
+    },
+    options: {
+        responsive: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+            x: {
+              stacked: true,
+            },
+            y: {
+              stacked: true
+            }
+        }
+    }
+   });
+
+
+</script>
+
+<script>
+    var canvas = document.getElementById('planning_fullstack')
+    var ctx = canvas.getContext('2d');
+    var planning_chart = new Chart(ctx, {
+    data: {
+        labels: {{ label_availability|safe }},
+        datasets : [
+        {
+            type: 'bar',
+            label: 'Workload Fullstack',
+            data: {{  data_workload_fs|safe }},
+            backgroundColor: 'rgb(0,0,139, 0.5)',
+            borderWidth: 1,
+        },
+        {
+            type: 'bar',
+            label: 'Workload Fullstack Done',
+            data: {{  data_workload_done_fs|safe }},
+            backgroundColor: 'rgb(45, 223, 243, 0.5)',
+            borderWidth: 1,
+        },
+        {
+            type: 'bar',
+            label: 'Workload Fullstack Left',
+            data: {{  data_workload_left_fs|safe }},
+            backgroundColor: 'rgb(0, 255, 26, 0.5)',
+            borderWidth: 1,
+            clip: false
+        },
+        {
+            type: 'line',
+            label: 'Availability FullStack',
+            data: {{  data_availability_fs|safe }},
+            borderColor: '#383E42',
+            borderWidth: 2
+        }],
+    },
+    options: {
+    responsive: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+   });
+
+
+
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+

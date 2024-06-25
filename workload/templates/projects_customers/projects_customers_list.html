@@ -1,0 +1,46 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<h2>Projects Customers List</h2>
+
+<div class="table">
+    <table class="rwd-table">
+        <thead>
+        <tr scope="header">
+            <th scope="col">Key</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Update</th>
+            <th scope="col">Bugs</th>
+            <th scope="col">Stories</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in list_projects_customers %}
+        <tr scope="{% if project.deployment != '' and project.deployment is not None  %}test{% endif %}">
+            <td scope="col"><a href="https://velco-tech.atlassian.net/browse/{{project.key}}">{{project.key}}</a></td>
+            <td scope="col">{{project.name}}</td>
+            <td scope="col">{{project.category}}</td>
+            <td scope="col">{{project.date_update}}</td>
+            <td scope="col">{{project.bugs}}</td>
+            <td scope="col">{{project.stories}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="text-center">
+        {% if list_projects_customers.has_previous %}
+        <a href="{% url 'projects_customers'%}?page={{list_projects_customers.previous_page_number}}">Previous</a>
+        {% endif %}
+        <span class="current">
+      Page {{ list_projects_customers.number }} in {{ list_projects_customers.paginator.num_pages  }}
+    </span>
+        {% if list_projects_customers.has_next %}
+        <a href="{% url 'projects_customers'%}?page={{list_projects_customers.next_page_number}}">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

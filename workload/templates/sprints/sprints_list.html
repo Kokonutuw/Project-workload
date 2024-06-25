@@ -1,0 +1,43 @@
+{% extends "workload/base.html" %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+    <h2>Sprint list</h2>
+    <table class="rwd-table">
+        <thead>
+        <tr scope="header">
+            <th scope="col">Name</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Estimation</th>
+            <th scope="col">Remaining</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sprints in sprints_list %}
+        <tr>
+            <td scope="col"><a href="{% url 'sprint_detail' sprints.id %}">{{sprints.name}}</a></td>
+            <td scope="col">{{sprints.start_date}}</td>
+            <td scope="col">{{sprints.end_date}}</td>
+            <td scope="col">{{sprints.estimation}}</td>
+            <td scope="col">{{sprints.estimation_remaining}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="text-center">
+        {% if sprints_list.has_previous %}
+        <a href="{% url 'sprints' %}?page={{sprints_list.previous_page_number}}">Previous</a>
+        {% endif %}
+        <span class="current">
+      Page {{ sprints_list.number }} in {{ sprints_list.paginator.num_pages }}
+    </span>
+        {% if sprints_list.has_next %}
+        <a href="{% url 'sprints' %}?page={{sprints_list.next_page_number}}">Next</a>
+        {% endif %}
+    </div>
+
+    {% endblock %}

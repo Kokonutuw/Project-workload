@@ -1,0 +1,47 @@
+{% extends "workload/base.html" %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+  <h2>Task list</h2>
+</div>
+
+
+<table class = "rwd-table">
+    <thead>
+      <tr scope="header">
+        <th scope="col">Key</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Assignee</th>
+        <th scope="col">Status</th>
+        <th scope="col">Resource type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tasks in tasks_list %}
+      <tr>
+          <td scope="col"><a href="https://velco-tech.atlassian.net/browse/{{tasks.key}}">{{tasks.key}} </a></td>
+          <td scope="col">{{tasks.summary}}</td>
+          <td scope="col">{{tasks.assignee}}</td>
+          <td scope="col">{{tasks.status}}</td>
+          <td scope="col">{{tasks.resource_type}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+  <br>
+ <div class="text-center">
+    {% if tasks_list.has_previous %}
+    <a href="{% url 'tasks'%}?page={{tasks_list.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ tasks_list.number }} in {{ tasks_list.paginator.num_pages }}
+    </span>
+    {% if tasks_list.has_next %}
+    <a href="{% url 'tasks'%}?page={{tasks_list.next_page_number}}">Next</a>
+    {% endif %}
+  </div>
+
+{% endblock %}

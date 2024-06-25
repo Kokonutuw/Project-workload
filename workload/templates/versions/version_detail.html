@@ -1,0 +1,171 @@
+{% extends "workload/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/detail_version.css' %}">
+<h1>Name : {{version.name}} </h1>
+
+<div class="detail">
+    <div class="attributversion">
+        <div>
+            <p><strong>First Sprint : </strong>{{version.first_sprint}} <br></p>
+            <p scope="col"><strong>Last Sprint : </strong> {{version.last_sprint}}</p>
+        </div>
+        <div>
+            <p scope="col"><strong>Development start : </strong> {{version.start_date_dev}}</p>
+            <p scope="col"><strong>Development end : </strong> {{version.end_date_dev}}</p>
+        </div>
+        <div>
+            <p scope="col"><strong>QA start : </strong> {{version.start_date_qa}}</p>
+            <p scope="col"><strong>QA end : </strong> {{version.end_date_qa}}</p>
+        </div>
+        <div>
+            <p scope="col"><strong>Stories : </strong> {{version.stories}}</p>
+            <p scope="col"><strong>Bugs : </strong> {{version.bugs}}</p>
+        </div>
+        <div>
+            <p scope="col"><strong>Estimation : </strong> {{version.estimation}}</p>
+            <p scope="col"><strong>Remaining : </strong> {{version.estimation_remaining}}</p>
+        </div>
+    </div>
+    <h2 style="color:#fff">Stories</h2>
+    <div style="display:flex; justify-content:center;margin-bottom:1%;">
+
+        <canvas id="details_stories" width="1000" height="300"
+                style="border:2px solid black;background:white; display:flex; justify-content:space-around;"></canvas>
+    </div>
+    <div class="tableau">
+        <table class="tableau-stories">
+            <thread>
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Assignee</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Estimation</th>
+                    <th scope="col">Estimation Done</th>
+                </tr>
+            </thread>
+            <tbody>
+            {% for story in list_stories %}
+            <tr>
+                <th scope="col"><a href="https://velco-tech.atlassian.net/browse/{{story.key}}">{{story.key}}</a>
+                </th>
+                <th scope="col">{{ story.summary }}</th>
+                <th scope="col">{{ story.assignee }}</th>
+                <th scope="col">{{ story.status }}</th>
+                <th scope="col">{{ story.type }}</th>
+                <th scope="col">{{ story.estimation }}</th>
+                <th scope="col">{{ story.estimation_done }}</th>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <h2 style="color:#fff;">Tasks</h2>
+    <div style="display:flex; justify-content:center;margin-bottom:1%;">
+
+        <canvas id="details_tasks" width="1000" height="300"
+                style="border:2px solid black;background:white; display:flex; justify-content:space-around;"></canvas>
+    </div>
+    <div class="attributtask">
+        <table class="fixed_headers">
+            <thread>
+                <tr>
+                    <th scope="col"><strong>Key</strong></th>
+                    <th scope="col"><strong>Summary</strong></th>
+                    <th scope="col"><strong>Sprint</strong></th>
+                    <th scope="col"><strong>Assignee</strong></th>
+                    <th scope="col"><strong>Status</strong></th>
+                    <th scope="col"><strong>Estimation</strong></th>
+                    <th scope="col"><strong>Avancement</strong></th>
+                </tr>
+            </thread>
+            <tbody>
+            {% for task in list_task %}
+            <tr scope="{% if task.status == 'READY ON TEST' %}test{% endif %}">
+                <th scope="col"><a href="https://velco-tech.atlassian.net/browse/{{task.key}}">{{task.key}}</a></th>
+                <th scope="col">{{task.summary}}</th>
+                <th scope="col">{{task.sprint}}</th>
+                <th scope="col">{{task.assignee}}</th>
+                <th scope="col">{{task.status}}</th>
+                <th scope="col">{{task.estimation}}</th>
+                <th scope="col">{{task.estimation_done}}</th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var canvas = document.getElementById('details_stories');
+    var ctx = canvas.getContext('2d');
+
+    const data = {
+      labels: {{ label_stories|safe }},
+      datasets: [{
+        label: 'Stories',
+        data: {{ data_stories|safe }},
+        backgroundColor: [
+          'rgb(222, 49, 99,0.5)',
+          'rgb(49, 222, 172,0.5)',
+          'rgb(222, 86, 49,0.5)',
+          'rgb(172, 49, 222,0.5)',
+          'rgb(185, 222, 49,0.5)',
+          'rgb(49, 185, 222,0.5)'
+        ],
+      }]
+    };
+
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {
+                responsive: false
+            }
+    };
+
+    var stories_chart = new Chart(ctx, config);
+
+
+
+</script>
+
+<script>
+    var canvas_task = document.getElementById('details_tasks');
+    var ctx = canvas_task.getContext('2d');
+
+    const data_task = {
+      labels: {{ label_tasks|safe }},
+      datasets: [{
+        label: 'Tasks',
+        data: {{ data_tasks|safe }},
+        backgroundColor: [
+          'rgb(222, 49, 99,0.5)',
+          'rgb(49, 222, 172,0.5)',
+          'rgb(222, 86, 49,0.5)',
+          'rgb(172, 49, 222,0.5)',
+          'rgb(185, 222, 49,0.5)',
+          'rgb(49, 185, 222,0.5)'
+        ],
+      }]
+    };
+
+    const config_task = {
+      type: 'doughnut',
+      data: data_task,
+      options: {
+                responsive: false
+            }
+    };
+
+    var tasks_chart = new Chart(ctx, config_task);
+
+
+
+</script>
+{% endblock %}

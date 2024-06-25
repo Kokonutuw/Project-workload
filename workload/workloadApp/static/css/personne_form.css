@@ -1,0 +1,21 @@
+.button {
+    border-radius:30px;
+    background-color:#383E42;
+    color:white;
+    display:flex;
+    justify-content:center;
+    border-width:thick;
+}
+
+.formulaire {
+    margin-left:10%;
+    background:#383E42;
+    display:flex;
+    flex-flow:column wrap;
+    align-content:center;
+    justify-content:center;
+    color:#fff;
+    width:80%;
+    height:100px;
+    border-radius:20px;
+}
